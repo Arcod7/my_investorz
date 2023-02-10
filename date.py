@@ -4,7 +4,7 @@ import streamlit as st
 
 def date():
     st.title("""
-    MY_INVESTOR
+    MY_INVESTORZ
     """)
     st.markdown("# Data 🎈")
     df = pd.read_csv('./data/train.csv')
