@@ -8,7 +8,7 @@ def page3():
     st.sidebar.markdown("# Page 3 🎉")
 
 page_names_to_funcs = {
-    "data": date,
+    "Data": date,
     "Price": price,
     "Page 3": page3,
 }
