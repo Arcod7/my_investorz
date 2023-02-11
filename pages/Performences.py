@@ -5,8 +5,8 @@ import numpy as np
 
 
 def Prices():
-    st.markdown("# Price ❄️")
-    tab1, tab2 = st.tabs(["Graph", "Spredsheet"])
+    st.markdown("# Thierry's performances 📈")
+    tab1, tab2 = st.tabs(["Indicators", "Spredsheet"])
     df = pd.read_csv('./data/since_2022.csv')
     with tab2:
         df = df.set_index("time")
@@ -17,7 +17,7 @@ def Prices():
     # else:
         st.write(df)
     with tab1:
-        st.header("Graph")
+        st.header("Indicators")
         buta, butb, butc, butd = st.columns(4)
         graph = []
         with buta:
@@ -49,7 +49,7 @@ def Prices():
         # st.checkbox("a", key="disabled")
         # st.checkbox("b", key="horizontal")
         # st.checkbox("c", key="horizontal")
-    st.sidebar.markdown("# Price ❄️")
+    st.sidebar.markdown("# Thierry's performances 📈")
 
 
 if __name__ == '__main__':
