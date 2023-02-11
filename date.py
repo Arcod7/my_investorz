@@ -4,7 +4,7 @@ import streamlit as st
 
 def date():
 #if sentence:
-    st.write(my_model.predict(sentence))
+    #st.write(my_model.predict(sentence))
     st.title("MY_INVESTORZ")
     st.markdown("# Data 🎈")
     df = pd.read_csv('./data/train.csv')
