@@ -2,14 +2,17 @@ import csv
 import pandas as pd
 import streamlit as st
 import numpy as np
+from datetime import datetime
+import altair as alt
 
 
 def Prices():
+    df = pd.read_csv("./data/ETH_1min.csv")
     st.markdown("# Thierry's performances 📈")
     tab1, tab2 = st.tabs(["Indicators", "Spredsheet"])
-    df = pd.read_csv('./data/since_2022.csv')
+    # df = df.drop(columns="BCU/")
+    #df = df.set_index("Unix Timestamp")
     with tab2:
-        df = df.set_index("time")
         st.write("And here's the data for view:")
         sentence = st.text_input('Type if you want to research any information in the database:')
     # if sentence == df[0]:
@@ -20,30 +23,58 @@ def Prices():
         st.header("Indicators")
         buta, butb, butc, butd = st.columns(4)
         graph = []
+        sentence = st.text_input("Training time")
+        option = st.selectbox(
+            'Choose a unit:',
+            ('Days', 'Weeks', 'Months', 'Years'))
+        #df["Unix Timestamp"].dt.tz_localize('Europe/Berlin')
+        st.write(df.dtypes)
+        if len(sentence) == 0:
+            sentence = '1'
+        st.write(sentence + ' ' + option)
+        unit = 24 * 60
+        if option == "Weeks":
+            unit *= 7
+        elif option == "Months":
+            unit *= 30
+        elif option == "Year":
+            unit *= 365
+        unit *= int(sentence)
         with buta:
-            if st.checkbox("sma"):
-                graph.append("sma")
-            elif "sma" in graph:
-                graph.remoove("sma")
+            if st.checkbox("Open"):
+                graph.append("Open")
+            elif "Open" in graph:
+                graph.remoove("Open")
         with butb:
-            if st.checkbox("sd"):
-                graph.append("sd")
-            elif "sd" in graph:
-                graph.remoove("sd")
+            if st.checkbox("High"):
+                graph.append("High")
+            elif "High" in graph:
+                graph.remoove("High")
         with butc:
-            if st.checkbox("lb"):
-                graph.append("lb")
-            elif "lb" in graph:
-                graph.remoove("lb")
+            if st.checkbox("Low"):
+                graph.append("Low")
+            elif "Low" in graph:
+                graph.remoove("Low")
         with butd:
-            if st.checkbox("ub"):
-                graph.append("ub")
-            elif "ub" in graph:
-                graph.remoove("ub")
+            if st.checkbox("Close"):
+                graph.append("Close")
+            elif "Close" in graph:
+                graph.remoove("Close")
         if len(graph) == 0:
-            graph = ['sma', 'sd', 'lb', 'ub']
-        df = df[graph]
-        st.line_chart(df)
+            graph = ['Open', 'High', 'Low', 'Close']
+        df = df[graph][-unit:-1]
+
+        lol = alt.Chart(df).mark_line(point=True).encode(
+            #alt.Y('graph:Q', axis=alt.Axis(format='%')),
+            x='date:T',
+            #color=':N'
+           # x='date',
+            y='price',
+            #y=alt.Y('price',scale=alt.Scale(domain=[df[graph].min(), df[graph].max()])),
+            #color='symbol',
+            #strokeDash='symbol'
+        )
+        st.altair_chart(lol)
 
     # with col1:
         # st.checkbox("a", key="disabled")
