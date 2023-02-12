@@ -8,6 +8,7 @@ import altair as alt
 
 
 def Prices():
+    st.set_page_config(page_icon="https://www.epitech.eu/fr/wp-content/uploads/Epitech_Technology_equipe_Lyon_Matthieu_Champely_Directeur_pedagogique_regional-1-e1650382218365-150x150.jpg")
     df = pd.read_csv("./data/ETH_1H_data.csv")
     dg = pd.read_csv("./data/perf.csv")
     st.markdown("# Thierry's performances 📈")
