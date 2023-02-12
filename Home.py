@@ -14,10 +14,10 @@ def main():
             "https://i.kym-cdn.com/photos/images/newsfeed/001/499/826/2f0.png",
             caption="https://i.kym-cdn.com/photos/images/newsfeed/001/499/826/2f0.png")
         st.header("*Description:*")
-        st.write("Thierry is a trading AI on the Etherium, made for the IA rush.")
+        st.write("Thierry is a trading AI on the Etherium, made by a laboratory of future searcher for the IA rush.")
+        st.write("In the project:")
     col1, col2, col3, col4, col5 = st.columns(5)
     with st.container():
-        st.write("In the project:")
         with col1:
             st.write("Thomas Pommier")
         with col2:
