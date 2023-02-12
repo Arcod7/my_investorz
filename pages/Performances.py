@@ -11,10 +11,11 @@ def Prices():
     df = pd.read_csv("./data/ETH_1H_data.csv")
     dg = pd.read_csv("./data/perf.csv")
     st.markdown("# Thierry's performances 📈")
-    tab1, tab2, tab3 = st.tabs(["Indicators", "Spredsheet", "Performances"])
+    tab1, tab2, tab3 = st.tabs(["Indicators", "Spreadsheet", "Performances"])
     # df = df.drop(columns="BCU/")
     #df = df.set_index("Unix Timestamp")
     with tab2:
+        st.header("Spreadsheet")
         year = st.sidebar.selectbox("Choose a year to start", range(2016, 2024))
         selected = st.sidebar.multiselect("select data", sorted(df.columns), sorted(df.columns))
         st.write("And here's the data for view:")
