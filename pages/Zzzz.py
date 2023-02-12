@@ -12,6 +12,7 @@ def BONUS():
     st.image(
         "https://pbs.twimg.com/media/FSLnb9MXEAA-Reu?format=jpg&name=large",
         caption = "Une super présentation!"
+    )
 
 if __name__ == '__main__':
     BONUS()
