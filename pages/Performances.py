@@ -9,8 +9,9 @@ import altair as alt
 
 def Prices():
     df = pd.read_csv("./data/ETH_1H_data.csv")
+    dg = pd.read_csv("./data/perf.csv")
     st.markdown("# Thierry's performances 📈")
-    tab1, tab2 = st.tabs(["Indicators", "Spredsheet"])
+    tab1, tab2, tab3 = st.tabs(["Indicators", "Spredsheet", "Performances"])
     # df = df.drop(columns="BCU/")
     #df = df.set_index("Unix Timestamp")
     with tab2:
@@ -80,7 +81,12 @@ def Prices():
         #)
         #st.altair_chart(lol)
         st.line_chart(copy_df[graph])
-
+    with tab3:
+        st.header("Performances")
+        st.subheader("\taccording to *Epochs*")
+        st.line_chart(dg[["Train"]])
+        st.line_chart(dg["Test"])
+        st.line_chart(dg["Train_Score"])
     # with col1:
         # st.checkbox("a", key="disabled")
         # st.checkbox("b", key="horizontal")
