@@ -8,6 +8,7 @@ from PIL import Image
 #from Prices import *
 
 def main():
+    st.set_page_config(page_icon="https://www.epitech.eu/fr/wp-content/uploads/Epitech_Technology_equipe_Lyon_Matthieu_Champely_Directeur_pedagogique_regional-1-e1650382218365-150x150.jpg")
     st.title("MY INVESTORZ")
     with st.container():
         st.image( 
